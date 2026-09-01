@@ -1,0 +1,11 @@
+-- dur-obs2.lua: 每2秒记录 pos 到文件
+local f = io.open(os.getenv('TEMP') .. '/v5pos.log', 'w')
+f:write('start\n')
+f:close()
+mp.register_event('tick', function()
+    local p = mp.get_property_number('time-pos')
+    local pausing = mp.get_property('paused-for-cache')
+    local f2 = io.open(os.getenv('TEMP') .. '/v5pos.log', 'a')
+    f2:write(string.format('%.1f p=%s pausedForCache=%s\n', os.time(), tostring(p), tostring(pausing)))
+    f2:close()
+end)
