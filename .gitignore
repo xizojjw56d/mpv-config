@@ -13,4 +13,4 @@ repo-reference/
 # !vs-plugins/vs_dlssnr.dll
 # !vs-plugins/dlssnr_panel.exe
 # !vs-plugins/ngx/
-whisper/faster-whisper-small/model.bin
+whisper/faster-whisper-small/
