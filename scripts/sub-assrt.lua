@@ -14,7 +14,7 @@ local uosc_available = false
 
 local o = {
     -- API token, 可以在 https://assrt.net 上注册账号后在个人界面获取
-    api_token = "tNjXZUnOJWcHznHDyalNMYqqP6IdDdpQ",
+    api_token = "YOUR_API_TOKEN",
     -- 是否使用 https
     use_https = true,
     -- 代理设置

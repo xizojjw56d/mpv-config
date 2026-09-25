@@ -63,7 +63,7 @@ local function do_switch(q)
     else
         -- B 站需要 cookie 大会员画质
         table.insert(args, 2, '--cookies-from-browser')
-        table.insert(args, 3, 'firefox:gmunjri5.default-release')
+        table.insert(args, 3, 'firefox:xxxxx.default-release')
     end
     local res = mp.command_native({
         name = 'subprocess',

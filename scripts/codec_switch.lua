@@ -100,7 +100,7 @@ local function do_switch(codec)
     mp.osd_message('switching to ' .. c[2] .. ' ...', 5)
     local res = mp.command_native({
         name = 'subprocess',
-        args = {YTDL_PATH, '--no-check-certificates', '--cookies-from-browser', 'firefox:gmunjri5.default-release', '-f', c[1], '--get-url', '--no-progress', url},
+        args = {YTDL_PATH, '--no-check-certificates', '--cookies-from-browser', 'firefox:xxxxx.default-release', '-f', c[1], '--get-url', '--no-progress', url},
         capture_stdout = true,
         capture_stderr = true,
         playback_only = false,
