@@ -391,6 +391,42 @@ pip install faster-whisper
 - **ffmpeg/ffprobe**: 已包含在便携版中
 - **v2rayN**: YouTube 直播需要（可选）
 
+### DLSSNR（NVIDIA NGX 画质增强，RTX 专用）
+
+基于 [Magpie experimental](https://github.com/SAOG0721/Magpie) 移植的 VapourSynth 插件，源自 [Rygtx/mpv_PlayKit](https://github.com/Rygtx/mpv_PlayKit)（dlssnr 分支）。
+
+```bash
+# 需要自行构建 DLL：
+# 1. 安装 Visual Studio 2022 Community（勾选"C++ 桌面开发"）
+# 2. git clone -b dlssnr https://github.com/Rygtx/mpv_PlayKit.git
+# 3. cd mpv_PlayKit/native/scripts
+# 4. powershell -File fetch-deps.ps1   # 下载 NGX SDK + VapourSynth 头文件
+# 5. powershell -File build.ps1        # 编译 vs_dlssnr.dll
+# 6. 复制文件到本配置目录：
+#    native/bin/vs_dlssnr.dll          → %APPDATA%\mpv\vs-plugins\
+#    native/bin/dlssnr_panel.exe       → %APPDATA%\mpv\vs-plugins\（可选，控制面板）
+#    native/bin/ngx/nvngx_dlssnr.dll   → %APPDATA%\mpv\vs-plugins\ngx\
+# 7. 重启 mpv，按 Ctrl+Alt+n 开关 DLSSNR
+
+# 注意：RTX 40/50 系走官方 NGX 签名链，不需要 RTX 20/30 系的代理组件
+```
+
+### RTX Video Super Resolution（直播优化内置）
+
+使用 NVIDIA RTX Video SDK 的低码率超分，已内置在"直播优化"画质模式中：
+- 需要 `hwdec=d3d11va`（直播优化 profile 已自动设置）
+- 需要 RTX 20 系+ 与 r550.58+ 驱动
+- 如果硬解被切到其他模式，`rtx-vsr-guard.lua` 会在 OSD 提示
+
+### 着色器致谢
+
+| 着色器 | 来源 |
+|--------|------|
+| ArtCNN_C4F16 | [Artoriuz/ArtCNN](https://github.com/Artoriuz/ArtCNN) |
+| CfL_Prediction | [AdrianEddy/tech](https://github.com/AdrianEddy/tech)（cfl 分支） |
+| SSimSuperRes / SSimDownscaler / adaptive-sharpen | [igv/FSRCNN_x](https://github.com/igv/FSRCNN_x) |
+| Anime4K 全系列 | [bloc97/Anime4K](https://github.com/bloc97/Anime4K) |
+
 ---
 
 ## 常见问题

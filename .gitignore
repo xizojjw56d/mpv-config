@@ -1,21 +1,16 @@
-*.log
-*.pyc
-__pycache__/
+# 运行时文件（不入库）
 cache/
 files/
-.manager/
 whisper/cache/
-whisper/ggml*.bin
-whisper/__pycache__/
+*.log
+*.pdb
+__pycache__/
 disabled-backup/
-repo-reference/
 fonts-extra/
-gost/
-tars/
-installer/
-doc/
-whisper/faster-whisper-small/
-whisper/ggml*.bin
-whisper/__pycache__/
-cache/
-files/
+repo-reference/
+
+# 保留构建产物和 DLL（用户 clone 后直接可用）
+# !vs-plugins/vs_dlssnr.dll
+# !vs-plugins/dlssnr_panel.exe
+# !vs-plugins/ngx/
+whisper/faster-whisper-small/model.bin
