@@ -121,6 +121,18 @@ def main():
             print("audio download failed")
             return 1
         src = audio
+
+    # monkeypatch for PyAV >= 12.0.0 breaking faster_whisper
+    try:
+        import av
+        _orig_av_open = av.open
+        def _patched_av_open(*args, **kwargs):
+            kwargs.pop("metadata_errors", None)
+            return _orig_av_open(*args, **kwargs)
+        av.open = _patched_av_open
+    except ImportError:
+        pass
+
     from faster_whisper import WhisperModel
     n_cores = max(1, min(4, (os.cpu_count() or 4) // 2))
     model = WhisperModel(model_dir, device="cpu", compute_type="int8", cpu_threads=n_cores)
